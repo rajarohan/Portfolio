@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajarohan</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header id="header">
+        <nav id="myNavMenu" class="nav-menu">
+            <div class="left"><img src="assets/Portfolio.png"></div>
+            <div class="right">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Skills.html">Skills</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact Me</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <canvas id="myChart1" width="500" height="200"></canvas>
+        <canvas id="myChart2" width="500" height="200" class="fade-in"></canvas>
+        <div class="chart-container">
+            <canvas id="teluguChart" width="20" height="20"></canvas>
+            <canvas id="hindiChart" width="20" height="20"></canvas>
+            <canvas id="englishChart" width="20" height="20"></canvas>
+        </div>
+    </main>
+    <footer>
+        <div class="footer">
+            <div class="footer-first">
+                <img src="assets/Portfolio.png">
+            </div>
+            <div class="footer-second">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Skills.html">Skills</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact Me</a></li>
+                </ul>
+            </div>
+            <div class="footer-third">
+                <ul>
+                    <li><a href="https://github.com/rajarohan">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/rajarohan-reddy/">LinkedIn</a></li>
+                    <li><a href="https://x.com/RajarohanV2111">Twitter</a></li>
+                    <li><a href="https://www.youtube.com/@rajarohanreddy9049">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-fourth">
+                <ul>
+                    <li>Privacy Policy</li>
+                    <li>Terms of Service</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-rights">
+            Copyright&#169;www.rajarohanportfolio.com | All rights reserved
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // First Chart
+        const ctx1 = document.getElementById('myChart1').getContext('2d');
+        const myChart1 = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['Web Development', 'DataBases', 'Machine Learning', 'Deep Learning', 'Android Development', 'AI Development'],
+                datasets: [{
+                    label: 'Skill level',
+                    data: [4.5, 4.25, 4.25, 3.5, 2.5, 2],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.7)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(153, 102, 255, 0.7)',
+                        'rgba(255, 159, 64, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1,
+                    barThickness: 35
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 5,
+                        ticks: {
+                            font: {
+                                weight: 'bold',
+                                size: 14
+                            }
+                        },
+                        grid: {
+                            borderColor: '#ddd',
+                            borderWidth: 1
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            font: {
+                                weight: 'bold',
+                                size: 14
+                            }
+                        },
+                        grid: {
+                            borderColor: '#ddd',
+                            borderWidth: 1
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            font: {
+                                weight: 'bold',
+                                size: 14
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.x !== null) {
+                                    label += context.parsed.x + ' out of 5';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 10,
+                        right: 10,
+                        top: 10,
+                        bottom: 10
+                    }
+                }
+            }
+        });
+
+        // Second Chart
+        const ctx2 = document.getElementById('myChart2').getContext('2d');
+        const myChart2 = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['C', 'Python', 'Java', 'HTML', 'CSS', 'JavaScript', 'SQL'],
+                datasets: [{
+                    label: 'Language level',
+                    data: [4.75, 4.5, 4, 4.85, 4.85, 4, 4.65],
+                    backgroundColor: [
+                        'rgba(255, 0, 0, 0.7)',
+                        'rgba(0, 128, 255, 0.7)',
+                        'rgba(255, 255, 0, 0.7)',
+                        'rgba(0, 255, 128, 0.7)',
+                        'rgba(128, 0, 255, 0.7)',
+                        'rgba(255, 165, 0, 0.7)',
+                        'rgba(0, 255, 255, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 0, 0, 1)',
+                        'rgba(0, 128, 255, 1)',
+                        'rgba(255, 255, 0, 1)',
+                        'rgba(0, 255, 128, 1)',
+                        'rgba(128, 0, 255, 1)',
+                        'rgba(255, 165, 0, 1)',
+                        'rgba(0, 255, 255, 1)'
+                    ],
+                    borderWidth: 1,
+                    barThickness: 35
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 5,
+                        ticks: {
+                            font: {
+                                weight: 'bold',
+                                size: 14
+                            }
+                        },
+                        grid: {
+                            borderColor: '#ddd',
+                            borderWidth: 1
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            font: {
+                                weight: 'bold',
+                                size: 14
+                            }
+                        },
+                        grid: {
+                            borderColor: '#ddd',
+                            borderWidth: 1
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            font: {
+                                weight: 'bold',
+                                size: 14
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.x !== null) {
+                                    label += context.parsed.x + ' out of 5';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 10,
+                        right: 10,
+                        top: 10,
+                        bottom: 10
+                    }
+                }
+            }
+        });
+        const teluguCtx = document.getElementById('teluguChart').getContext('2d');
+        const teluguChart = new Chart(teluguCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Telugu Reading', 'Telugu Speaking', 'Telugu Writing', 'Telugu Listening'],
+                datasets: [{
+                    data: [25, 25, 20, 25],
+                    backgroundColor: ['rgba(255, 255, 0, 0.7)',
+                        'rgba(0, 255, 128, 0.7)',
+                        'rgba(128, 0, 255, 0.7)',
+                        'rgba(255, 165, 0, 0.7)'],
+                    borderColor: ['rgba(255, 255, 255, 100)'],
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: {
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const hindiCtx = document.getElementById('hindiChart').getContext('2d');
+        const hindiChart = new Chart(hindiCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Hindi Reading', 'Hindi Speaking', 'Hindi Writing', 'Hindi Listening'],
+                datasets: [{
+                    data: [25, 23, 20, 25],
+                    backgroundColor: ['rgba(255, 99, 132, 0.7)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(153, 102, 255, 0.7)'],
+                    borderColor: ['rgba(255, 255, 255, 100)'],
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: {
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const englishCtx = document.getElementById('englishChart').getContext('2d');
+        const englishChart = new Chart(englishCtx, {
+            type: 'pie',
+            data: {
+                labels: ['English Reading', 'English Speaking', 'English Writing', 'English Listening'],
+                datasets: [{
+                    data: [25, 24, 20, 25],
+                    backgroundColor: ['rgba(255, 0, 0, 0.7)',
+                        'rgba(0, 255, 128, 0.7)',
+                        'rgba(255, 165, 0, 0.7)',
+                        'rgba(0, 255, 255, 0.7)'],
+                    borderColor: ['rgba(255, 255, 255, 100)'],
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: {
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
